@@ -49,22 +49,59 @@ function displayFavorites() {
 
 //   function addWordLists() {
 let set1 = [
-  { word: "word1" },
-  { word: "word2" },
-  { word: "word3", sentence: "This is the third word in list 1." },
+  { word: "I" },
+  { word: "like" },
+  { word: "do" },
+  { word: "to" },
+  { word: "you" },
+  { word: "he" },
+  { word: "can" },
+  { word: "go" },
+  { word: "a" },
+  { word: "this" },
+  { word: "is" },
+  { word: "my" },
+  { word: "look" },
+  { word: "little" },
+  { word: "where" },
 ];
 
 words = set1;
 
 let set2 = [
-  { word: "word4", sentence: "This is the first word in list 2." },
-  { word: "word5", sentence: "This is the second word in list 2." },
-  { word: "word6", sentence: "This is the third word in list 2." },
+  { word: "word1" },
+  { word: "word2" },
+  { word: "word3" },
+  { word: "word4" },
+  { word: "word5" },
+  { word: "word6" },
+  { word: "word7" },
+  { word: "word8" },
+  { word: "word9" },
+  { word: "word10" },
+  { word: "word11" },
+  { word: "word12" },
+  { word: "word13" },
+  { word: "word14" },
+  { word: "word15" },
 ];
+
 let set3 = [
-  { word: "word7", sentence: "This is the first word in list 3." },
-  { word: "word8", sentence: "This is the second word in list 3." },
-  { word: "word9", sentence: "This is the third word in list 3." },
+  { word: "word1" },
+  { word: "word2" },
+  { word: "word3" },
+  { word: "word4" },
+  { word: "word5" },
+  { word: "word6" },
+  { word: "word7" },
+  { word: "word8" },
+  { word: "word9" },
+  { word: "word10" },
+  { word: "word11" },
+  { word: "word12" },
+  { word: "word13" },
+  { word: "word14" },
+  { word: "word15" },
 ];
 
 function addWordLists() {
