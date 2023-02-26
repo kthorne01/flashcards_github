@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script5test3.js" defer></script>
+    <title>Flashcards</title>
+</head>
+
+<body>
+    <main>
+        <h1>Thorne's Virtual Flashcards</h1>
+        <div class="layout">
+            <section id="sets">
+                <select id="sets-box">
+                    <option value="set1">Set 1</option>
+                    <option value="set2">Set 2</option>
+                    <option value="set3">Set 3</option>
+                    <option value="set4">Set 4</option>
+                    <option value="set5">Set 5</option>
+                    <option value="set6">Set 6</option>
+                    <option value="set7">Set 7</option>
+                </select>
+            </section>
+            <section id="cards-container">
+                <section id="cards">
+
+                    <div id="flashcard">
+                        <p id="word"></p>
+                        <button id="favorite">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+
+                </section>
+
+                <section id="buttons">
+
+                    <div class="left-buttons">
+                        <button id="prev">Previous</button>
+                        <button id="next">Next</button>
+                    </div>
+
+                    <button id="show-favorites">More Review</button>
+                </section>
+
+            </section>
+            <section id="review">
+                <h2 id="list-heading">Review</h2>
+                <ul id="favorite-list">
+                    <li></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
