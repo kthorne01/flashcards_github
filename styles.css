@@ -222,4 +222,7 @@ select {
         margin-left: 0vw;
         margin-right: 0vw;
     }
+#flashcard {
+    height: 200px;
+}
 }
