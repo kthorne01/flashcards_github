@@ -25,8 +25,8 @@ let nextEl = document.getElementById("next");
 // let set2El = document.getElementById("set2");
 // let set3El = document.getElementById("set3");
 
-// Function to display the current word and sentence on the flashcard
-// Don't need this block in script5 I think....
+// Function to display the current word and sentence on the flashcard, but I removed the sentence
+// Also marks the favorite button when you click it and resets to not favorited when you go to the next word
 function displayWord() {
   wordEl.textContent = words[currentIndex].word;
   if (favorites.includes(words[currentIndex])) {
@@ -35,6 +35,23 @@ function displayWord() {
     favoriteEl.classList.remove("favorited");
   }
 }
+
+// When users favorite a word by touching the heart, it will turn red and next word will reset to not favorited
+// ....on swipe
+
+favoriteEl.addEventListener("touchend", function (event) {
+  event.preventDefault();
+  if (favorites.includes(words[currentIndex])) {
+    let index = favorites.indexOf(words[currentIndex]);
+    favorites.splice(index, 1);
+    favoriteEl.classList.remove("favorited");
+  } else {
+    favorites.push(words[currentIndex]);
+    favoriteEl.classList.add("favorited");
+  }
+  displayFavorites();
+});
+
 
 // Function to display the list of favorited words on the right side of the page
 //Added this on script5
@@ -187,6 +204,14 @@ function addWordLists() {
       words = set2;
     } else if (selectedSet === "set3") {
       words = set3;
+    }else if (selectedSet === "set4") {
+      words = set4;
+    }else if (selectedSet === "set5") {
+      words = set5;
+    }else if (selectedSet === "set6") {
+      words = set6;
+    }else if (selectedSet === "set7") {
+      words = set7;
     }
     currentIndex = 0;
     displayWord();
@@ -208,6 +233,69 @@ favoriteEl.addEventListener("click", function () {
     favoriteEl.classList.add("favorited");
   }
 });
+
+// Event listener for the favorite buttong to add or remove the current word from the favorites list with swiping
+// favoriteEl.addEventListener("touchend", function () {
+//   if (favorites.includes(words[currentIndex])) {
+//     let index = favorites.indexOf(words[currentIndex]);
+//     favorites.splice(index, 1);
+//     favoriteEl.classList.remove("favorited");
+//   } else {
+//     favorites.push(words[currentIndex]);
+//     favoriteEl.classList.add("favorited");
+//   }
+//   displayFavorites();
+//   if (favorites.includes(words[currentIndex])) {
+//     favoriteEl.classList.add("favorited");
+//   }
+// });
+
+
+// let touchStartX = 0;
+// let touchEndX = 0;
+
+// flashcard.addEventListener("touchstart", function (event) {
+//   touchStartX = event.touches[0].clientX;
+// });
+
+// flashcard.addEventListener("touchend", function (event) {
+//   touchEndX = event.changedTouches[0].clientX;
+//   let swipeDistance = touchEndX - touchStartX;
+//   if (swipeDistance < -minDistance) {
+//     // swipe left, go to next card
+//     currentIndex++;
+//     if (currentIndex >= words.length) {
+//       currentIndex = 0;
+//     }
+//     displayWord();
+//   } else if (swipeDistance > minDistance) {
+//     // swipe right, go to previous card
+//     if (currentIndex > 0) {
+//       currentIndex--;
+//       displayWord();
+//     }
+//   } else {
+//     // tap, toggle favorite
+//     if (favorites.includes(words[currentIndex])) {
+//       let index = favorites.indexOf(words[currentIndex]);
+//       favorites.splice(index, 1);
+//       favoriteEl.classList.remove("favorited");
+//     } else {
+//       favorites.push(words[currentIndex]);
+//       favoriteEl.classList.add("favorited");
+//     }
+//     displayFavorites();
+//     if (favorites.includes(words[currentIndex])) {
+//       favoriteEl.classList.add("favorited");
+//     }
+//   }
+// });
+
+
+
+
+
+
 // Event listeners for the previous and next buttons to navigate through the words
 prevEl.addEventListener("click", function () {
   if (currentIndex > 0) {
@@ -222,6 +310,42 @@ nextEl.addEventListener("click", function () {
   }
   displayWord();
 });
+
+// Swipe Ability by adding touch event listeners or swipe event listeners
+let startTouchX = null;
+
+flashcard.addEventListener("touchstart", function (event) {
+  startTouchX = event.touches[0].clientX;
+});
+
+flashcard.addEventListener("touchend", function (event) {
+  let endTouchX = event.changedTouches[0].clientX;
+  let deltaX = endTouchX - startTouchX;
+
+  if (deltaX > 50) { // swipe right
+    prevEl.click();
+  } else if (deltaX < -50) { // swipe left
+    nextEl.click();
+  }
+});
+
+// When I add this code in, it stops my stars from working and it does not get the heart to turn back gray
+// let swipe = new Hammer(flashcard);
+// swipe.on("swipeleft", function () {
+//   if (currentIndex < words.length - 1) {
+//     currentIndex++;
+//     displayWord();
+//   }
+// });
+// swipe.on("swiperight", function () {
+//   if (currentIndex > 0) {
+//     currentIndex--;
+//     displayWord();
+//   }
+// });
+// swipe.get("swipe").set({ direction: Hammer.DIRECTION_HORIZONTAL, threshold: minDistance });
+
+// ******Stars******
 
 let stars = [];
 
