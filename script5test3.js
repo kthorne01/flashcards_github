@@ -158,39 +158,141 @@ let set5 = [
 ];
 
 let set6 = [
-  { word: "start here" },
-  { word: "out" },
-  { word: "very" },
-  { word: "up" },
-  { word: "be" },
-  { word: "come" },
-  { word: "good" },
-  { word: "pull" },
-  { word: "fun" },
-  { word: "make" },
-  { word: "they" },
-  { word: "too" },
-  { word: "jump" },
-  { word: "move" },
-  { word: "run" },
+  { word: "way" },
+  { word: "why" },
+  { word: "green" },
+  { word: "grow" },
+  { word: "pretty" },
+  { word: "should" },
+  { word: "together" },
+  { word: "water" },
+  { word: "from" },
+  { word: "any" },
+  { word: "happy" },
+  { word: "once" },
+  { word: "ago" },
+  { word: "boy" },
+  { word: "girl" },
 ];
 
 let set7 = [
-  { word: "down" },
-  { word: "out" },
-  { word: "very" },
-  { word: "up" },
-  { word: "be" },
-  { word: "come" },
-  { word: "good" },
-  { word: "pull" },
-  { word: "fun" },
-  { word: "make" },
-  { word: "they" },
-  { word: "too" },
-  { word: "jump" },
-  { word: "move" },
-  { word: "run" },
+  { word: "how" },
+  { word: "old" },
+  { word: "people" },
+  { word: "after" },
+  { word: "buy" },
+  { word: "done" },
+  { word: "every" },
+  { word: "soon" },
+  { word: "work" },
+  { word: "about" },
+  { word: "animal" },
+  { word: "carry" },
+  { word: "eight" },
+  { word: "give" },
+  { word: "our" },
+];
+
+let set8 = [
+  { word: "blue" },
+  { word: "into" },
+  { word: "or" },
+  { word: "because" },
+  { word: "other" },
+  { word: "small" },
+  { word: "find" },
+  { word: "food" },
+  { word: "more" },
+  { word: "over" },
+  { word: "start" },
+  { word: "warm" },
+  { word: "caught" },
+  { word: "flew" },
+  { word: "know" },
+];
+
+let set9 = [
+  { word: "laugh" },
+  { word: "listen" },
+  { word: "were" },
+  { word: "found" },
+  { word: "hard" },
+  { word: "near" },
+  { word: "woman" },
+  { word: "would" },
+  { word: "write" },
+  { word: "four" },
+  { word: "large" },
+  { word: "none" },
+  { word: "only" },
+  { word: "put" },
+  { word: "round" },
+];
+
+let set10 = [
+  { word: "another" },
+  { word: "climb" },
+  { word: "full" },
+  { word: "great" },
+  { word: "poor" },
+  { word: "began" },
+  { word: "better" },
+  { word: "guess" },
+  { word: "learn" },
+  { word: "through" },
+  { word: "right" },
+  { word: "sure" },
+  { word: "color" },
+  { word: "early" },
+  { word: "instead" },
+];
+
+let set11 = [
+  { word: "oh" },
+  { word: "thought" },
+  { word: "above" },
+  { word: "nothing" },
+  { word: "build" },
+  { word: "fall" },
+  { word: "knew" },
+  { word: "money" },
+  { word: "toward" },
+  { word: "answer" },
+  { word: "brought" },
+  { word: "busy" },
+  { word: "door" },
+  { word: "enough" },
+  { word: "eyes" },
+];
+
+let set12 = [
+  { word: "brother" },
+  { word: "father" },
+  { word: "friend" },
+  { word: "love" },
+  { word: "mother" },
+  { word: "picture" },
+  { word: "been" },
+  { word: "children" },
+  { word: "month" },
+  { word: "question" },
+  { word: "their" },
+  { word: "year" },
+  { word: "before" },
+  { word: "front" },
+  { word: "heard" },
+];
+
+let set13 = [
+  { word: "push" },
+  { word: "tomorrow" },
+  { word: "your" },
+  { word: "favorite" },
+  { word: "few" },
+  { word: "gone" },
+  { word: "surprise" },
+  { word: "wonder" },
+  { word: "young" },
 ];
 
 function addWordLists() {
@@ -211,6 +313,18 @@ function addWordLists() {
     }else if (selectedSet === "set6") {
       words = set6;
     }else if (selectedSet === "set7") {
+      words = set7;
+    }else if (selectedSet === "set8") {
+      words = set7;
+    }else if (selectedSet === "set9") {
+      words = set7;
+    }else if (selectedSet === "set10") {
+      words = set7;
+    }else if (selectedSet === "set11") {
+      words = set7;
+    }else if (selectedSet === "set12") {
+      words = set7;
+    }else if (selectedSet === "set13") {
       words = set7;
     }
     currentIndex = 0;
