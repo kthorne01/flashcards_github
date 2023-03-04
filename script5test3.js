@@ -315,17 +315,17 @@ function addWordLists() {
     }else if (selectedSet === "set7") {
       words = set7;
     }else if (selectedSet === "set8") {
-      words = set7;
+      words = set8;
     }else if (selectedSet === "set9") {
-      words = set7;
+      words = set9;
     }else if (selectedSet === "set10") {
-      words = set7;
+      words = set10;
     }else if (selectedSet === "set11") {
-      words = set7;
+      words = set11;
     }else if (selectedSet === "set12") {
-      words = set7;
+      words = set12;
     }else if (selectedSet === "set13") {
-      words = set7;
+      words = set13;
     }
     currentIndex = 0;
     displayWord();
