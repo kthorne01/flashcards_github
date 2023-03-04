@@ -1,6 +1,7 @@
 window.onload = randomizeStarPositions;
 
 window.onload = function () {
+  loadFavoritesFromStorage();
   displayWord();
   addWordLists();
 
@@ -14,6 +15,7 @@ window.onload = function () {
 
 let currentIndex = 0;
 let favorites = [];
+
 
 let flashcard = document.getElementById("flashcard");
 let wordEl = document.getElementById("word");
@@ -36,22 +38,13 @@ function displayWord() {
   }
 }
 
-// When users favorite a word by touching the heart, it will turn red and next word will reset to not favorited
-// ....on swipe
 
-favoriteEl.addEventListener("touchend", function (event) {
-  event.preventDefault();
-  if (favorites.includes(words[currentIndex])) {
-    let index = favorites.indexOf(words[currentIndex]);
-    favorites.splice(index, 1);
-    favoriteEl.classList.remove("favorited");
-  } else {
-    favorites.push(words[currentIndex]);
-    favoriteEl.classList.add("favorited");
+function loadFavoritesFromStorage() {
+  if(localStorage.getItem("favorites")){
+    favorites = JSON.parse(localStorage.getItem("favorites"));
+    displayFavorites();
   }
-  displayFavorites();
-});
-
+}
 
 // Function to display the list of favorited words on the right side of the page
 //Added this on script5
@@ -332,8 +325,8 @@ function addWordLists() {
   });
 
 }
-// Event listener for the favorite button to add or remove the current word from the favorites list
-favoriteEl.addEventListener("click", function () {
+
+function saveWord() {
   if (favorites.includes(words[currentIndex])) {
     let index = favorites.indexOf(words[currentIndex]);
     favorites.splice(index, 1);
@@ -342,10 +335,25 @@ favoriteEl.addEventListener("click", function () {
     favorites.push(words[currentIndex]);
     favoriteEl.classList.add("favorited");
   }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
   displayFavorites();
+  
+}
+
+// Event listener for the favorite button to add or remove the current word from the favorites list
+favoriteEl.addEventListener("click", function(){
+  saveWord()
   if (favorites.includes(words[currentIndex])) {
     favoriteEl.classList.add("favorited");
   }
+});
+
+// When users favorite a word by touching the heart, it will turn red and next word will reset to not favorited
+// ....on swipe
+
+favoriteEl.addEventListener("touchend", function (event) {
+  event.preventDefault();
+  saveWord()
 });
 
 // Event listener for the favorite buttong to add or remove the current word from the favorites list with swiping
