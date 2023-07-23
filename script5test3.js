@@ -17,6 +17,7 @@ let currentIndex = 0;
 let favorites = [];
 
 
+
 let flashcard = document.getElementById("flashcard");
 let wordEl = document.getElementById("word");
 let favoriteEl = document.getElementById("favorite");
@@ -29,9 +30,19 @@ let nextEl = document.getElementById("next");
 
 // Function to display the current word and sentence on the flashcard, but I removed the sentence
 // Also marks the favorite button when you click it and resets to not favorited when you go to the next word
+// function displayWord() {
+//   wordEl.textContent = words[currentIndex].word;
+//   if (favorites.includes(words[currentIndex])) {
+//     favoriteEl.classList.add("favorited");
+//   } else {
+//     favoriteEl.classList.remove("favorited");
+//   }
+// }
 function displayWord() {
   wordEl.textContent = words[currentIndex].word;
-  if (favorites.includes(words[currentIndex])) {
+
+  // Check if the current word is favorited and add "favorited" class to heart
+  if (favorites.some((word) => word.word === words[currentIndex].word)) {
     favoriteEl.classList.add("favorited");
   } else {
     favoriteEl.classList.remove("favorited");
@@ -40,11 +51,27 @@ function displayWord() {
 
 
 function loadFavoritesFromStorage() {
-  if(localStorage.getItem("favorites")){
+  if (localStorage.getItem("favorites")) {
     favorites = JSON.parse(localStorage.getItem("favorites"));
+    // Remove duplicate favorited words from the favorites list
+    const uniqueFavorites = [];
+    favorites.forEach((word) => {
+      if (!uniqueFavorites.some((item) => item.word === word.word)) {
+        uniqueFavorites.push(word);
+      }
+    });
+    favorites = uniqueFavorites;
     displayFavorites();
   }
 }
+
+
+// function loadFavoritesFromStorage() {
+//   if(localStorage.getItem("favorites")){
+//     favorites = JSON.parse(localStorage.getItem("favorites"));
+//     displayFavorites();
+//   }
+// }
 
 // Function to display the list of favorited words on the right side of the page
 //Added this on script5
@@ -77,6 +104,7 @@ let set1 = [
 ];
 
 words = set1;
+
 
 let set2 = [
   { word: "play" },
@@ -326,19 +354,68 @@ function addWordLists() {
 
 }
 
-function saveWord() {
-  if (favorites.includes(words[currentIndex])) {
-    let index = favorites.indexOf(words[currentIndex]);
-    favorites.splice(index, 1);
-    favoriteEl.classList.remove("favorited");
-  } else {
-    favorites.push(words[currentIndex]);
-    favoriteEl.classList.add("favorited");
+function hasBeenFavorited(item) {
+  let count = 0;
+  for (let i = 0; i < favorites.length; i++) {
+    if (favorites[i].word === item.word) {
+      count++;
+      if (count >= 2) {
+        return false; // Return false if the word is found multiple times
+      }
+    }
   }
+  return count === 1; // Return true if the word is found once, false otherwise
+}
+
+function saveWord() {
+  const currentWord = words[currentIndex];
+
+  if (favorites.some((word) => word.word === currentWord.word)) {
+    // If the word is already favorited, remove it from the favorites list
+    favorites = favorites.filter((word) => word.word !== currentWord.word);
+    favoriteEl.classList.remove("favorited"); // Remove class immediately
+  } else {
+    // If the word is not favorited, add it to the favorites list
+    favorites.push(currentWord);
+    favoriteEl.classList.add("favorited"); // Add class immediately
+  }
+
   localStorage.setItem("favorites", JSON.stringify(favorites));
   displayFavorites();
-  
 }
+
+
+// function saveWord() {
+//   const currentWord = words[currentIndex];
+
+//   if (hasBeenFavorited(currentWord)) {
+//     // If the word is already favorited, remove it from the favorites list
+//     favorites = favorites.filter((word) => word.word !== currentWord.word);
+//     favoriteEl.classList.remove("favorited");
+//   } else {
+//     // If the word is not favorited, add it to the favorites list
+//     favorites.push(currentWord);
+//     favoriteEl.classList.add("favorited");
+//   }
+
+//   localStorage.setItem("favorites", JSON.stringify(favorites));
+//   displayFavorites();
+// }
+
+
+// function saveWord() {
+//   if (favorites.includes(words[currentIndex])) {
+//     let index = favorites.indexOf(words[currentIndex]);
+//     favorites.splice(index, 1);
+//     favoriteEl.classList.remove("favorited");
+//   } else {
+//     favorites.push(words[currentIndex]);
+//     favoriteEl.classList.add("favorited");
+//   }
+//   localStorage.setItem("favorites", JSON.stringify(favorites));
+//   displayFavorites();
+  
+// }
 
 // Event listener for the favorite button to add or remove the current word from the favorites list
 favoriteEl.addEventListener("click", function(){
