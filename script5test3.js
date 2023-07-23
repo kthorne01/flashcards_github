@@ -17,6 +17,7 @@ let currentIndex = 0;
 let favorites = [];
 
 
+
 let flashcard = document.getElementById("flashcard");
 let wordEl = document.getElementById("word");
 let favoriteEl = document.getElementById("favorite");
@@ -103,6 +104,7 @@ let set1 = [
 ];
 
 words = set1;
+
 
 let set2 = [
   { word: "play" },
