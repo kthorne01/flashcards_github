@@ -29,14 +29,25 @@ let nextEl = document.getElementById("next");
 
 // Function to display the current word and sentence on the flashcard, but I removed the sentence
 // Also marks the favorite button when you click it and resets to not favorited when you go to the next word
+// function displayWord() {
+//   wordEl.textContent = words[currentIndex].word;
+//   if (favorites.includes(words[currentIndex])) {
+//     favoriteEl.classList.add("favorited");
+//   } else {
+//     favoriteEl.classList.remove("favorited");
+//   }
+// }
 function displayWord() {
   wordEl.textContent = words[currentIndex].word;
-  if (favorites.includes(words[currentIndex])) {
+
+  // Check if the current word is favorited and add "favorited" class to heart
+  if (favorites.some((word) => word.word === words[currentIndex].word)) {
     favoriteEl.classList.add("favorited");
   } else {
     favoriteEl.classList.remove("favorited");
   }
 }
+
 
 function loadFavoritesFromStorage() {
   if (localStorage.getItem("favorites")) {
@@ -357,19 +368,37 @@ function hasBeenFavorited(item) {
 function saveWord() {
   const currentWord = words[currentIndex];
 
-  if (hasBeenFavorited(currentWord)) {
+  if (favorites.some((word) => word.word === currentWord.word)) {
     // If the word is already favorited, remove it from the favorites list
     favorites = favorites.filter((word) => word.word !== currentWord.word);
-    favoriteEl.classList.remove("favorited");
+    favoriteEl.classList.remove("favorited"); // Remove class immediately
   } else {
     // If the word is not favorited, add it to the favorites list
     favorites.push(currentWord);
-    favoriteEl.classList.add("favorited");
+    favoriteEl.classList.add("favorited"); // Add class immediately
   }
 
   localStorage.setItem("favorites", JSON.stringify(favorites));
   displayFavorites();
 }
+
+
+// function saveWord() {
+//   const currentWord = words[currentIndex];
+
+//   if (hasBeenFavorited(currentWord)) {
+//     // If the word is already favorited, remove it from the favorites list
+//     favorites = favorites.filter((word) => word.word !== currentWord.word);
+//     favoriteEl.classList.remove("favorited");
+//   } else {
+//     // If the word is not favorited, add it to the favorites list
+//     favorites.push(currentWord);
+//     favoriteEl.classList.add("favorited");
+//   }
+
+//   localStorage.setItem("favorites", JSON.stringify(favorites));
+//   displayFavorites();
+// }
 
 
 // function saveWord() {
