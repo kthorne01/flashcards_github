@@ -1,0 +1,17 @@
+export const set2 = [
+    { word: "play" },
+    { word: "the" },
+    { word: "we" },
+    { word: "are" },
+    { word: "me" },
+    { word: "she" },
+    { word: "with" },
+    { word: "for" },
+    { word: "and" },
+    { word: "have" },
+    { word: "see" },
+    { word: "does" },
+    { word: "not" },
+    { word: "school" },
+    { word: "what" },
+  ];
