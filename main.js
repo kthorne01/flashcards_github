@@ -1,5 +1,16 @@
-import { set1, set3, set4, set5, set6, set7, set8, set9, set10, set11, set12, set13 } from './wordsets1.js';
-import { set2 } from './wordsets2.js';
+import { set1 } from './frywords1.js';
+import { set2 } from './frywords2.js';
+import { set3 } from './frywords3.js';
+import { set4 } from './frywords4.js';
+import { set5 } from './frywords5.js';
+import { set6 } from './frywords6.js';
+import { set7 } from './frywords7.js';
+import { set8 } from './frywords8.js';
+import { set9 } from './frywords9.js';
+import { set10 } from './frywords10.js';
+import { set11 } from './extrawords11.js';
+import { set12 } from './extrawords12.js';
+import { set13 } from './extrawords13.js';
 
 // window.onload = randomizeStarPositions;
 
