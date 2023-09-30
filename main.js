@@ -12,8 +12,13 @@ import { set11 } from './extrawords11.js';
 import { set12 } from './extrawords12.js';
 import { set13 } from './extrawords13.js';
 
-// window.onload = randomizeStarPositions;
 
+if(!localStorage.getItem('isLoggedIn')) {
+  window.location.href = "login.html";
+}
+
+
+// window.onload = randomizeStarPositions;
 window.onload = function () {
   randomizeStarPositions();  
   displayWord();
