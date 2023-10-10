@@ -14,6 +14,10 @@ import { set13 } from './wordsets/extrawords13.js';
 
 // window.onload = randomizeStarPositions;
 
+if(!localStorage.getItem('isLoggedIn')) {
+  window.location.href = "login.html";
+}
+
 window.onload = function () {
   randomizeStarPositions();  
   displayWord();
